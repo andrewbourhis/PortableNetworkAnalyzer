@@ -360,7 +360,6 @@ bool AD5933::setNumberIncrements(unsigned int num) {
     // Divide the 9-bit integer into 2 bytes.
     byte highByte = (num >> 8) & 0xFF;
     byte lowByte = num & 0xFF;
-
     // Write to register.
     return sendByte(NUM_INC_1, highByte) &&
            sendByte(NUM_INC_2, lowByte);
