@@ -26,7 +26,7 @@
 //----------------------------------------------------------------------------------------------------------------
 struct Sensor{
   unsigned long startFreq;
-  unsigned long deltaFreq;
+  float deltaFreq;
   int numbIncrements;
   int numbSettleCycles;
   int numbSettleCyclesMult;//x1, x2, or x4
@@ -507,7 +507,7 @@ bool setRfbMux(double rfb){
 bool initAD5933(int sensorIndex){
   int nInc = sensors[sensorIndex].numbIncrements;
   long startFreqVal = sensors[sensorIndex].startFreq;
-  long delFreq = sensors[sensorIndex].deltaFreq;
+  float delFreq = sensors[sensorIndex].deltaFreq;
   long midFreqVal = startFreqVal + ( ( sensors[sensorIndex].numbIncrements * sensors[sensorIndex].deltaFreq ) / 2 );
   muxSelect(sensorIndex);
   //if we are calibrating, make sure we only take a single sample for mid-point calibration
@@ -549,7 +549,7 @@ bool initAD5933(int sensorIndex){
 bool getParameters(){
   for(int i = 0; i < numberOfSensors; i++){
     sensors[i].startFreq = atol(server.arg("startFreq"+String(i+1)).c_str());
-    sensors[i].deltaFreq = atol(server.arg("deltaFreq"+String(i+1)).c_str());
+    sensors[i].deltaFreq = atof(server.arg("deltaFreq"+String(i+1)).c_str());
     sensors[i].numbIncrements = atoi(server.arg("numFreqInc"+String(i+1)).c_str());
     sensors[i].numbSettleCycles = atoi(server.arg("numSettleCycles"+String(i+1)).c_str());
     sensors[i].numbSettleCyclesMult = atoi(server.arg("numbCyclesMult"+String(i+1)).c_str());

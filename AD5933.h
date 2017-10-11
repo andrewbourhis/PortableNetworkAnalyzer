@@ -116,7 +116,7 @@ class AD5933 {
 		
         // Frequency sweep configuration
         static bool setStartFrequency(unsigned long s, unsigned long c = 16776000);
-        static bool setIncrementFrequency(unsigned long i, unsigned long c = 16776000);
+        static bool setIncrementFrequency(float i, unsigned long c = 16776000);
         static bool setNumberIncrements(unsigned int);
         static bool setExcitationVoltage(unsigned int);
         static bool setControlRegisters(byte, byte);

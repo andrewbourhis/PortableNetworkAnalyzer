@@ -325,7 +325,7 @@ bool AD5933::setStartFrequency(unsigned long start, unsigned long clockSpeed) {
  * @param clockSpeed The MCLK value (default set to internal clock speed)
  * @return Success or failure
  */
-bool AD5933::setIncrementFrequency(unsigned long increment, unsigned long clockSpeed) {
+bool AD5933::setIncrementFrequency(float increment, unsigned long clockSpeed) {
     // Page 25 of the Datasheet gives the following formula to represent the
     // increment frequency.
     // TODO: Precompute for better performance if we want to keep this constant.
